@@ -41,8 +41,8 @@ public class ReservationFragment extends BaseFragment {
     private int  institutionId ;
     private int doctorId ;
     private int branchId ;
-    private String mDate  ;
-    private String mTime ;
+    private String mDate = "" ;
+    private String mTime = "" ;
 
     @Nullable
     @Override
@@ -116,7 +116,14 @@ public class ReservationFragment extends BaseFragment {
                     MainActivity.stopLoading();
                     ReservationModel model = (ReservationModel) networkState.getData();
                     Toast.makeText(myContext, model.getMessage(), Toast.LENGTH_SHORT).show();
-                    navigate(ReservationFragmentDirections.actionReservationFragmentToHomeFragment());
+                    if (model.getCode() == 2000){
+                       navigate(ReservationFragmentDirections.actionReservationFragmentToLoginFragment());
+                    }else if (model.getCode() == 100){
+
+                        navigate(ReservationFragmentDirections.actionReservationFragmentToHomeFragment());
+                    }
+
+
 
                 }else {
                     MainActivity.stopLoading();
@@ -158,6 +165,7 @@ public class ReservationFragment extends BaseFragment {
             @Override
             public void onClick(String date, int dayNumber) {
                 mDate = date ;
+                mTime = "" ;
                 viewModel.getTime(branchId,doctorId,dayNumber,institutionId,date);
 
             }
