@@ -16,7 +16,7 @@ import com.magdy.medicatask.utils.DayHelper;
 import java.util.List;
 
 public class RecyclerAdapterDays extends RecyclerView.Adapter<RecyclerAdapterDays.Holder> {
-
+//new
     int row_index   ;
     private RecyclerDatesAdapter adapter = new RecyclerDatesAdapter();
     private List<ModelAppointments.ItemBean.DataBean> list ;
